@@ -81,6 +81,11 @@ void screenHandler()
         M5.Lcd.setFreeFont(FSB24);
         M5.Lcd.print("PM2.5");
     }
+    else if(activeScreen == 2){
+        M5.Lcd.setCursor(10, 60);
+        M5.Lcd.setFreeFont(FSB24);
+        M5.Lcd.print("Settings");
+    }
 }
 void btnHandler()
 {
