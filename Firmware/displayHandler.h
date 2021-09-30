@@ -81,7 +81,8 @@ void screenHandler()
         M5.Lcd.setFreeFont(FSB24);
         M5.Lcd.print("PM2.5");
     }
-    else if(activeScreen == 2){
+    else if (activeScreen == 2)
+    {
         M5.Lcd.setCursor(10, 60);
         M5.Lcd.setFreeFont(FSB24);
         M5.Lcd.print("Settings");
@@ -107,24 +108,23 @@ void btnHandler()
     else if (M5.BtnB.wasReleased() || M5.BtnB.pressedFor(1000, 200))
     {
         M5.Lcd.clear(TFT_BLACK);
-        
+
         if (activeScreen == 0)
         {
-            
+
             M5.Lcd.drawRect(130, 11, 10, 10, BLUE);
             M5.Lcd.fillCircle(160, 13, 5, WHITE);
             M5.Lcd.fillCircle(190, 13, 5, WHITE);
             activeScreen++;
-            
         }
 
         else if (activeScreen == 2)
         {
-            
+
             M5.Lcd.fillCircle(130, 13, 5, WHITE);
             M5.Lcd.drawRect(160, 11, 10, 10, BLUE);
             M5.Lcd.fillCircle(190, 13, 5, WHITE);
-            
+
             activeScreen = 0;
         }
         else if (activeScreen == 1)
@@ -133,7 +133,7 @@ void btnHandler()
             M5.Lcd.fillCircle(130, 13, 5, WHITE);
             M5.Lcd.fillCircle(160, 13, 5, WHITE);
             M5.Lcd.drawRect(190, 11, 10, 10, BLUE);
-            
+
             activeScreen++;
         }
     }
