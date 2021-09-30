@@ -75,7 +75,7 @@ You should have Arduino IDE Installed
   3. Search for ESP32 and press install button for the ESP32 by Espressif Systems.
   4. Search for M5Stack and press install
 
-    ![M5StackBoard](artwork/m5stackboard.png)
+![M5StackBoard](artwork/m5stackboard.png)
   
   5. That’s it. It should be installed after a few seconds.
   6.  In your Arduino sketchbook directory, create tools directory if it doesn't exist yet.
