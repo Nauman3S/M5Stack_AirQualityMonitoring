@@ -1,0 +1,16 @@
+IOT project
+1.	Device include Co2 sensor detect Co2 in the air and give alarm. Device also read Paticle matter sensor. 
+a.	Using M5stack screen to display Co2 level, time, pm 2.5 level 
+b.	Using M5stack kit with vibration motor. When Co2 increase to 1000ppm it will give notification and vibrate for 10 seconds. Repeat after 15 second if Co2 still more than 1000ppm
+c.	Using M5stact to turn on the fan automatically when PM2.5 increase more than 100 ppm. 
+2.	Device connect to wifi or bluetooth to simple phone app. (M5stack already has wifi and bluetooth hardware)
+
+3.	Phone app can see Co2 and PM2.5 number, we can use app to turn on fan. 
+4.	Fan power 12V – 1Amp. 
+5.	The hard ware will be power by battery 12V 3000mah. This battery can power the fan temporary if not plug into 12V source
+
+look like mainly number 3 require work from app to bluetooth to turn on the fan.
+
+The battery do have 5V out and 12V out. So all the hardware can be power by the 5V
+
+the m5stack has 3 bottons, can you program that 3 buttons. 1 is to turn on and off. 2 is switch between reading of pm2.5 or Co2. Button 3 maybe for something else will develop later, maybe fan speed or some other sensor or information.
