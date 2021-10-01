@@ -64,22 +64,22 @@ void dataTable()
     redirectToHome();
 }
 
-void sendRedirect(String uri)
-{
-    server.sendHeader("Location", uri, true);
-    server.send(302, "text/plain", "");
-    server.client().stop();
-}
+// void sendRedirect(String uri)
+// {
+//     server.sendHeader("Location", uri, true);
+//     server.send(302, "text/plain", "");
+//     server.client().stop();
+// }
 void handleCON()
 {
     String argV = String(server.arg("v"));
     if (argV == "wifi")
     {
-        connectionMode = "WiFi";
+        // connectionMode = "WiFi";
     }
     else if (argV == "gprs")
     {
-        connectionMode = "GPRS";
+        // connectionMode = "GPRS";
     }
 
     redirectToHome();
@@ -88,6 +88,20 @@ void handleDEV()
 {
     String argV = String(server.arg("v"));
     Serial.println(argV);
-    selectedDeviceIndex = argV.toInt();
+    //selectedDeviceIndex = argV.toInt();
     redirectToHome();
+}
+void sendRedirect(String uri)
+{
+    server.sendHeader("Location", uri, true);
+    server.send(302, "text/plain", "");
+    server.client().stop();
+}
+void handleGPIO()
+{
+    if (server.arg("v") == "low")
+        Serial.println("LOW");
+    else if (server.arg("v") == "high")
+        Serial.println("HIGH");
+    sendRedirect("/");
 }

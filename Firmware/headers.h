@@ -1,72 +1,20 @@
-String serverName;
-String channelId;
-String userKey;
-String apiKey;
-String apid;
-String hostName = "SmartAir";
-String apPass;
-String settingsPass;
 
-#if defined(ARDUINO_ARCH_ESP8266)
-#include <ESP8266WiFi.h>
-#include <ESP8266WebServer.h>
-#elif defined(ARDUINO_ARCH_ESP32)
+String hostName = "SmartAir";
 #include <WiFi.h>
 #include <WebServer.h>
-#endif
-
 #include <AutoConnect.h>
 
-#if defined(ARDUINO_ARCH_ESP8266)
-ESP8266WebServer server;
-#elif defined(ARDUINO_ARCH_ESP32)
-WebServer server;
-#endif
 #include <ESPmDNS.h>
 #include <PubSubClient.h>
 #include "SoftwareStack.h"
-#ifndef BUILTIN_LED
-#define BUILTIN_LED 2 // backward compatibility
-#endif
-#if defined(ARDUINO_ARCH_ESP8266)
-#ifdef AUTOCONNECT_USE_SPIFFS
-FS &FlashFS = SPIFFS;
-#else
-#include <LittleFS.h>
-FS &FlashFS = LittleFS;
-#endif
-#elif defined(ARDUINO_ARCH_ESP32)
-#include <SPIFFS.h>
-fs::SPIFFSFS &FlashFS = SPIFFS;
-#endif
-
 #include "neoTimer.h"
+WebServer server;
+#include "webApp.h"
 
 #define GET_CHIPID() ((uint16_t)(ESP.getEfuseMac() >> 32))
 
 unsigned long lastPub = 0;
 unsigned int updateInterval = 2000;
-
-#define PARAM_FILE "/param.json"
-#define AUX_MQTTSETTING "/mqtt_setting"
-#define AUX_MQTTSAVE "/mqtt_save"
-#define AUX_MQTTCLEAR "/mqtt_clear"
-static const char PAGE_AUTH[] PROGMEM = R"(
-{
-  "uri": "/auth",
-  "title": "Auth",
-  "menu": false,
-    "auth": "digest",
-  "element": [
-    {
-      "name": "text",
-      "type": "ACText",
-      "value": "AutoConnect has authorized",
-      "style": "font-family:Arial;font-size:18px;font-weight:400;color:#191970"
-    }
-  ]
-}
-)";
 
 SoftwareStack ss; //SS instance
 AutoConnectConfig config;
@@ -99,7 +47,7 @@ String connectionMode = "WiFi";
 
 bool atDetect(IPAddress &softapIP)
 {
-    Serial.println("Captive portal started, SoftAP IP:" + softapIP.toString());
+  Serial.println("Captive portal started, SoftAP IP:" + softapIP.toString());
 
-    return true;
+  return true;
 }
