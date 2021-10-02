@@ -14,9 +14,9 @@ uint8_t pm5State = 0;
 void setupPM5()
 {
   // Wait for serial monitor to open
-  Serial.begin(115200);
-  while (!Serial)
-    delay(10);
+  // Serial.begin(115200);
+  // while (!Serial)
+  //   delay(10);
 
   Serial.println("Adafruit PMSA003I Air Quality Sensor");
 
@@ -34,12 +34,7 @@ void setupPM5()
     //if (! aqi.begin_UART(&Serial1)) { // connect to the sensor over hardware serial
     //if (! aqi.begin_UART(&pmSerial)) { // connect to the sensor over software serial
     Serial.println("Could not find PM 2.5 sensor!");
-    while (1)
-    {
-      pm5State = 0;
-      delay(100);
-      break;
-    }
+    pm5State = 0;
   }
 
   Serial.println("PM25 found!");
@@ -51,10 +46,10 @@ String loopPM5()
 
   if (!aqi.read(&data))
   {
-    Serial.println("Could not read from AQI");
-    delay(500); // try again in a bit!
+   // Serial.println("Could not read from AQI");
+   // delay(500); // try again in a bit!
     pm5State = 0;
-    pm2V="0.0";
+    pm2V = "0.0";
     return pm2V;
   }
   else
@@ -81,9 +76,13 @@ String loopPM5()
     // Serial.print(F("Particles > 5.0um / 0.1L air:")); Serial.println(data.particles_50um);
     // Serial.print(F("Particles > 10 um / 0.1L air:")); Serial.println(data.particles_100um);
     // Serial.println(F("---------------------------------------"));
-    pm2V= String(data.particles_25um);
+    pm2V = String(data.particles_25um);
+    if(pm2V.toFloat()>100){
+      fanSwitch(1);
+    }
+   
     return pm2V;
 
-    delay(10);
+    //delay(10);
   }
 }

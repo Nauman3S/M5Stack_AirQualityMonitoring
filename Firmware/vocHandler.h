@@ -24,18 +24,14 @@ int retryCount = 0;
 
 void setupVOC()
 {
-  Serial.begin(9600);
 
   Serial.println("CCS811 test");
 
   if (!ccs.begin())
   {
     Serial.println("Failed to start sensor! Please check your wiring.");
-    while (1)
-    {
-      vocSensorState = 0;
-      break;
-    }
+
+    vocSensorState = 0;
   }
 
   // Wait for the sensor to be ready
@@ -61,17 +57,17 @@ String loopVOC()
       // Serial.print(ccs.geteCO2());
       // Serial.print("ppm, TVOC: ");
       // Serial.println(ccs.getTVOC());
-      co2V=String(ccs.geteCO2());
+      co2V = String(ccs.geteCO2());
       return co2V;
     }
     else
     {
-      Serial.println("ERROR!");
+     // Serial.println("ERROR!");
       //while(1);
       vocSensorState = 0;
-      co2V="0.0";
+      co2V = "0.0";
       return co2V;
     }
   }
-  delay(10);
+  //delay(10);
 }

@@ -47,11 +47,21 @@ void handleRoot()
 
     page += String(F("<h1>SmartAir Device Data</h1>"));
     page += String(F("<h2>PM2.5</h2>"));
-    page += String(pm2V);
+    page += String(getPM25());
     page += String(F("<br>"));
     page += String(F("<h2>CO2</h2>"));
-    page += String(co2V);
-    page += String(F("<p><br><a class=\"button\" href=\"/\">Refresh</a></p>"));
+    page += String(getCO2());
+    page += String(F("<p><br><a class=\"button\" href=\"/\">Refresh Sensors</a></p>"));
+    page += String(F("<h2>Fan Switch</h2>"));
+    if (getFanState() == 1)
+    {
+        page += String(F("<p><br><a class=\"button\" href=\"/io?v=high\">OFF</a></p>"));
+    }
+    else
+    {
+        page += String(F("<p><br><a class=\"button\" href=\"/io?v=low\">ON</a></p>"));
+    }
+
     page += String(F("</body></html>"));
 
     server.send(200, "text/html", page);
@@ -103,9 +113,16 @@ void sendRedirect(String uri)
 }
 void handleGPIO()
 {
+    //Serial.println(server.arg("v"));
     if (server.arg("v") == "low")
+    {
         Serial.println("LOW");
+        fanSwitch(1);
+    }
     else if (server.arg("v") == "high")
+    {
         Serial.println("HIGH");
+        fanSwitch(0);
+    }
     sendRedirect("/");
 }

@@ -3,6 +3,7 @@ String hostName = "SmartAir";
 String apPass = "12345678AP";
 String pm2V = "0.0";
 String co2V = "0.0";
+
 float getPM25();
 float getCO2();
 
@@ -20,6 +21,7 @@ float getCO2();
 WebServer server;
 #include "webApp.h"
 #include "displayHandler.h"
+#include "speakerHandler.h"
 
 #define GET_CHIPID() ((uint16_t)(ESP.getEfuseMac() >> 32))
 

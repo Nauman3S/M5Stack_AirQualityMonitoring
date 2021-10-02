@@ -1,5 +1,5 @@
 #include <M5Stack.h>
-String ipAddr="";
+String ipAddr = "";
 
 #include "headers.h"   //all misc. headers and functions
 #include "MQTTFuncs.h" //MQTT related functions
@@ -30,10 +30,11 @@ void setup()
 
     M5.begin();       //Init M5Core. Initialize M5Core
     M5.Power.begin(); //Init Power module. Initialize the power module
-    setupFanHandler(26);
+    setupFanHandler(26); //fan connected to gpio26
     setupDISPLAY();
     setupPM5();
     setupVOC();
+    setupVibration();
     /* Power chip connected to gpio21, gpio22, I2C device
                       Set battery charging voltage and current
                       If used battery, please call this function in your project */
@@ -58,7 +59,9 @@ void setup()
     Serial.print("Password: ");
     Serial.println(apPass);
     config.title = "Smart Air Device"; //set title of webapp
+    portal.append("/", "Sensors");
     server.on("/", handleRoot);
+
     server.on("/io", handleGPIO);
     portal.config(config);
     portal.onDetect(atDetect);
@@ -92,6 +95,7 @@ void loop()
     loopDisplay();
     loopPM5();
     loopVOC();
+    setVibration(getCO2());
     server.handleClient();
     portal.handleRequest();
     if (millis() - lastPub > updateInterval) //publish data to mqtt server
