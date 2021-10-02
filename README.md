@@ -28,6 +28,7 @@
 - [Usage](#usage)
 - [List Of Components](#list)
 - [Built Using](#built_using)
+- [DemoVideo](#DemoVideo)
 - [Authors](#authors)
 
 
@@ -113,17 +114,16 @@ You should have Arduino IDE Installed
 ## Usage <a name = "usage"></a>
 
 1.  Upload the code to your M5Stack.
-4.  You can also download the logs in CSV format from the dashboard home page.
-5.  Power on your ESP32, it will present you with an AP named ```SmartAir-abc``` (while ```SmartAir``` can be changed in the portal and ```abc``` is a unique id for each esp32)
-6.  Default captive portal password `123456789AP` which can be changed in captive portal.
-7.  Connect to the ESP32 access point and open the web-browser and navigate to the link ```http://esp32.local/_ac```. This link will work on most of the operating systems but if your operating system is not allowing to open it, you may want to check the captive portal IP Address from the serial monitor and can use that IP address inplace of the above mentioned URL.
-8.  The default access IP Address is ```http://192.168.4.1/_ac```
-9.  You will be presented with a main dashboard as shown below(based on your device)
+2.  Power on your ESP32, it will present you with an AP named ```SmartAir-abc``` (while ```SmartAir``` can be changed in the portal and ```abc``` is a unique id for each esp32)
+3.  Default captive portal password `123456789AP` which can be changed in captive portal.
+4.  Connect to the ESP32 access point and open the web-browser and navigate to the link ```http://esp32.local/_ac```. This link will work on most of the operating systems but if your operating system is not allowing to open it, you may want to check the captive portal IP Address from the serial monitor and can use that IP address inplace of the above mentioned URL.
+5.  The default access IP Address is ```http://192.168.4.1/_ac```
+6.  You will be presented with a main dashboard as shown below(based on your device)
    ![SCR1](Circuit/scr1.png)
 
-5.  Once connected to a WiFi network, you can again access the captive portal using same URL or the IP Address from the Serial monitor.
-6.  The data is published to the MQTT Topic ```SmartAir/{hostname}``` while the hostname is the one which you can define in Settings page of the captive portal.
-7.  You can also check the realted IP address in the settings screen of M5Stack by pressing the button 'B' two times.
+7.  Once connected to a WiFi network, you can again access the captive portal using same URL or the IP Address from the Serial monitor.
+8.  The data is published to the MQTT Topic ```SmartAir/{hostname}``` while the hostname is the one which you can define in Settings page of the captive portal.
+9.  You can also check the realted IP address in the settings screen of M5Stack by pressing the button 'B' two times.
 
 ## List of Components <a name = "list"></a>
 
@@ -140,6 +140,12 @@ Following components are used to make this project
 ## ⛏️ Built Using <a name = "built_using"></a>
 
 - [Arduino](https://www.arduino.cc/) - Embedded Framework and IDE - For Sensor Node Design
+
+## 📹 Demo Video <a name = "DemoVideo"></a>
+
+[SmartAir Demo Video](https://youtu.be/Dd3uMzf-TNA) - Demo Video Part 1
+[SmartAir Demo Video](https://youtu.be/cCcm4IN_Dts) - Demo Video Part 2
+
 
 
 
