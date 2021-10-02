@@ -1,6 +1,6 @@
 
 String hostName = "SmartAir";
-String apPass = "12345678AP";
+String apPass = "123456789AP";
 String pm2V = "0.0";
 String co2V = "0.0";
 
