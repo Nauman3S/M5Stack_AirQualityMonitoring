@@ -77,12 +77,10 @@ You should have Arduino IDE Installed
 
 ![M5StackBoard](artwork/m5stackboard.PNG)
   
-  5. That’s it. It should be installed after a few seconds.
-  6.  In your Arduino sketchbook directory, create tools directory if it doesn't exist yet.
-  7.  Unpack the tool into tools directory(present in libs/ESP32FS-1.0.zip) (the path will look like <home_dir>/Arduino/tools/ESP32FS/tool/esp32fs.jar).
-  8.  Close and re-open the Arduino IDE.
+  5.  That’s it. It should be installed after a few seconds.
+  6.  Close and re-open the Arduino IDE.
 
-  9.  Now copy the contents of the libs folder to the libraries directory of your Arduino
+  7.  Now copy the contents of the libs folder to the libraries directory of your Arduino
       1. If you are using windows, the libraries directory will be Documents/Arduino/libraries
 
 ##### ESP32 Node FW Uploading

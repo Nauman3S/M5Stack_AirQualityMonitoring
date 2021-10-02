@@ -19,33 +19,59 @@
 #include "Adafruit_CCS811.h"
 
 Adafruit_CCS811 ccs;
+uint8_t vocSensorState = 0;
+int retryCount = 0;
 
-void setupVOC() {
+void setupVOC()
+{
   Serial.begin(9600);
 
   Serial.println("CCS811 test");
 
-  if(!ccs.begin()){
+  if (!ccs.begin())
+  {
     Serial.println("Failed to start sensor! Please check your wiring.");
-    while(1);
+    while (1)
+    {
+      vocSensorState = 0;
+      break;
+    }
   }
 
   // Wait for the sensor to be ready
-  while(!ccs.available());
-}
-
-void loopVOC() {
-  if(ccs.available()){
-    if(!ccs.readData()){
-      Serial.print("CO2: ");
-      Serial.print(ccs.geteCO2());
-      Serial.print("ppm, TVOC: ");
-      Serial.println(ccs.getTVOC());
-    }
-    else{
-      Serial.println("ERROR!");
-      while(1);
+  while (!ccs.available())
+  {
+    retryCount++;
+    if (retryCount >= 15)
+    {
+      vocSensorState = 0;
+      retryCount = 0;
+      break;
     }
   }
-  delay(500);
+}
+
+String loopVOC()
+{
+  if (ccs.available())
+  {
+    if (!ccs.readData())
+    {
+      // Serial.print("CO2: ");
+      // Serial.print(ccs.geteCO2());
+      // Serial.print("ppm, TVOC: ");
+      // Serial.println(ccs.getTVOC());
+      co2V=String(ccs.geteCO2());
+      return co2V;
+    }
+    else
+    {
+      Serial.println("ERROR!");
+      //while(1);
+      vocSensorState = 0;
+      co2V="0.0";
+      return co2V;
+    }
+  }
+  delay(10);
 }

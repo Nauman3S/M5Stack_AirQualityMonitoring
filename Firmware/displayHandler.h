@@ -68,7 +68,7 @@ void screenHandler()
     int ypos = 85;
     if (activeScreen == 0)
     { //Co2
-        M5.Lcd.drawFloat(23.56, 2, xpos, ypos, 8);
+        M5.Lcd.drawFloat(getPM25(), 2, xpos, ypos, 8);
         M5.Lcd.setCursor(xpos + 20, ypos + 130);
         M5.Lcd.setFreeFont(FSB24);
         M5.Lcd.print("Co2");
@@ -76,7 +76,7 @@ void screenHandler()
     else if (activeScreen == 1)
     {
         //PM2.5
-        M5.Lcd.drawFloat(23.56, 2, xpos, ypos, 8);
+        M5.Lcd.drawFloat(getCO2(), 2, xpos, ypos, 8);
         M5.Lcd.setCursor(xpos + 20, ypos + 130);
         M5.Lcd.setFreeFont(FSB24);
         M5.Lcd.print("PM2.5");
@@ -86,6 +86,18 @@ void screenHandler()
         M5.Lcd.setCursor(10, 60);
         M5.Lcd.setFreeFont(FSB24);
         M5.Lcd.print("Settings");
+        M5.Lcd.setCursor(10, 90);
+        M5.Lcd.setFreeFont(FSB12);
+        M5.Lcd.print("Navigate to this IP: ");
+        M5.Lcd.setCursor(10, 130);
+        M5.Lcd.setFreeFont(FSB18);
+        M5.Lcd.print(ipAddr);
+        M5.Lcd.setCursor(10, 160);
+        M5.Lcd.setFreeFont(FSB12);
+        M5.Lcd.print("Or open this address: ");
+        M5.Lcd.setCursor(10, 190);
+        M5.Lcd.setFreeFont(FSB18);
+        M5.Lcd.print("http://esp32.local/");
     }
 }
 void btnHandler()
@@ -151,6 +163,7 @@ void loopDisplay()
 {
     M5.update();
     btnHandler();
+    
 
     displayBatteryLevel(M5.Power.getBatteryLevel());
 

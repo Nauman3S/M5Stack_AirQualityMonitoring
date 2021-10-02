@@ -1,5 +1,14 @@
 
 String hostName = "SmartAir";
+String apPass = "12345678AP";
+String pm2V = "0.0";
+String co2V = "0.0";
+float getPM25();
+float getCO2();
+
+#include "fanHandler.h"
+#include "pm5Handler.h"
+#include "vocHandler.h"
 #include <WiFi.h>
 #include <WebServer.h>
 #include <AutoConnect.h>
@@ -10,6 +19,7 @@ String hostName = "SmartAir";
 #include "neoTimer.h"
 WebServer server;
 #include "webApp.h"
+#include "displayHandler.h"
 
 #define GET_CHIPID() ((uint16_t)(ESP.getEfuseMac() >> 32))
 
@@ -50,4 +60,12 @@ bool atDetect(IPAddress &softapIP)
   Serial.println("Captive portal started, SoftAP IP:" + softapIP.toString());
 
   return true;
+}
+
+float getPM25(){
+  return pm2V.toFloat();
+}
+
+float getCO2(){
+  return co2V.toFloat();
 }

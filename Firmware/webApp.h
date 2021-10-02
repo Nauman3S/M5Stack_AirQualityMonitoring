@@ -46,7 +46,11 @@ void handleRoot()
                                                         "SmartAir Device<br>");
 
     page += String(F("<h1>SmartAir Device Data</h1>"));
-
+    page += String(F("<h2>PM2.5</h2>"));
+    page += String(pm2V);
+    page += String(F("<br>"));
+    page += String(F("<h2>CO2</h2>"));
+    page += String(co2V);
     page += String(F("<p><br><a class=\"button\" href=\"/\">Refresh</a></p>"));
     page += String(F("</body></html>"));
 
