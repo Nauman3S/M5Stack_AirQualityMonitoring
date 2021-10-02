@@ -98,7 +98,7 @@ You should have Arduino IDE Installed
 ### ESP32 Dev Module Pinout
 
 
-N/A
+- Relay should be connected to GPIO26 of the M5Stack. This can be chnaged in Firmware.ino
 
 
 ## MQTT Topic Details <a name = "mqtt"></a>
@@ -121,9 +121,7 @@ N/A
 
 5.  Once connected to a WiFi network, you can again access the captive portal using same URL or the IP Address from the Serial monitor.
 6.  The data is published to the MQTT Topic ```SmartAir/{hostname}``` while the hostname is the one which you can define in Settings page of the captive portal.
-7.  You can open settings page with following default credentials
-    1.  User: **AP Name (SmartAir)**
-    2.  Password: **admin**
+7.  You can also check the realted IP address in the settings screen of M5Stack by pressing the button 'B' two times.
 
 ## List of Components <a name = "list"></a>
 
